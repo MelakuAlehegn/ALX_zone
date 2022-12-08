@@ -10,13 +10,13 @@ on:
       - master
 jobs:
   tests:
-    runs-on: [ubuntu-lattest]
+    runs-on: [ubuntu-latest]
     
     steps:
       - name: First test
         run: echo "First test running"
   deploy:
-    runs-on: [ubuntu-lattest]
+    runs-on: [ubuntu-latest]
     
     steps:
       - name: Deploy code
