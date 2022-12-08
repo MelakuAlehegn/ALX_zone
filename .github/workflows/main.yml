@@ -17,13 +17,13 @@ jobs:
         run: echo "First test running"
       
       - name: List current folder
-        run : ls -la
+        run : ls
 
-      - name: Git clone my repo
+      - name: Git clone
         uses: actions/checkout@v1
           
       - name: List current folder again
-        run : ls -la
+        run : ls
         
   deploy:
     runs-on: [ubuntu-latest]
