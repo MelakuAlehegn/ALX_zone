@@ -1,6 +1,11 @@
 # pipeline
 
 name: ALX-zone CI
+env: 
+  APP_NAME: "Flask_App"
+  
+
+
 on: 
   push:
     branches: 
@@ -34,6 +39,9 @@ jobs:
         
       - name: Execute command
         run: pwd
+        
+      - name: Success Message
+        run: echo "${{ env.APP_NAME }} is Deployed"
         
         
         
