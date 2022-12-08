@@ -1,0 +1,28 @@
+# pipeline
+
+name: ALX-zone CI
+on: 
+  push:
+    branches: 
+      - master
+  pull_request:
+    branches: 
+      - master
+jobs:
+  tests:
+    runs-on: [ubuntu-lattest]
+    
+    steps:
+      - name: First test
+        run: echo "First test running"
+  deploy:
+    runs-on: [ubuntu-lattest]
+    
+    steps:
+      - name: Deploy code
+        run: echo "Deploying code"
+        
+        
+        
+        
+        
