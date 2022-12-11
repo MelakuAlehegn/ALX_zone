@@ -3,8 +3,8 @@ import sqlite3
 from flask import Flask, render_template, request, url_for, flash, redirect, abort, session
 from datetime import datetime
 
-application = Flask(__name__)
-application.config['SECRET_KEY'] = 'd6bb525dd12c9953922f61784e785ba147f643b5d515ba0f'
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'd6bb525dd12c9953922f61784e785ba147f643b5d515ba0f'
 def get_db_connection():
     conn = sqlite3.connect('test.db')
     conn.row_factory = sqlite3.Row
@@ -19,11 +19,11 @@ def get_post(post_id):
         abort(404)
     return post
 
-@application.route('/')
+@app.route('/')
 def index():
     return render_template('index.html')
 
-@application.route('/login/', methods=('GET', 'POST'))
+@app.route('/login/', methods=('GET', 'POST'))
 def login():
     if request.method == 'POST':
         user = request.form['email']
@@ -43,7 +43,7 @@ def login():
 
     return render_template('login.html')
 
-@application.route('/register/', methods=('GET', 'POST'))
+@app.route('/register/', methods=('GET', 'POST'))
 def register():
     if request.method == 'POST':
         name = request.form['name']
@@ -70,7 +70,7 @@ def register():
             return redirect(url_for('login'))
     return render_template('register.html')
 
-@application.route('/createpost/', methods=('GET', 'POST'))
+@app.route('/createpost/', methods=('GET', 'POST'))
 def createpost():
         user = session['user']
         if request.method == 'POST':
@@ -91,7 +91,7 @@ def createpost():
                 return redirect(url_for('post'))
         return render_template('update_post.html', user=user)
 
-@application.route('/<int:id>/edit/', methods=('GET', 'POST'))
+@app.route('/<int:id>/edit/', methods=('GET', 'POST'))
 def edit(id):
     post = get_post(id)
 
@@ -115,7 +115,7 @@ def edit(id):
 
     return render_template('edit.html', post=post)
 
-@application.route('/posts/')
+@app.route('/posts/')
 def post():
     if 'user' in session:
         conn=get_db_connection()
@@ -125,10 +125,10 @@ def post():
     else:
         return redirect(url_for('login'))
 
-@application.route('/logout/', methods=('GET', 'POST'))
+@app.route('/logout/', methods=('GET', 'POST'))
 def logout():
     session.pop("user", None)
     return redirect(url_for('login'))
 
 if __name__ == "__main__":
-    application.run(debug=True)
+    app.run(debug=True)
