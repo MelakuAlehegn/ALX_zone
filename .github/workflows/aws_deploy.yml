@@ -2,7 +2,7 @@ name: AWS-BeanStalk-Deploy
 
 env:
   APP_S3_BUCKET_NAME: "myalx" # BENSTALK S3 BUCKET NAME NAME
-  APP_NAME : "Alxzone" # BENSTALK APP NAME
+  APP_NAME : "alx-zone" # BENSTALK APP NAME
   ENV_NAME: "Alxzone-env" # YOUR BENSTALK APP ENV NAME
   DEPLOY_PKG_NAME: "github-action-alx-zone_${{ github.sha }}.zip"
   AWS_REGION_NAME: "us-east-1"
