@@ -21,7 +21,7 @@ jobs:
       run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
       
     - name: Build Docker image
-      run: docker build . --file Dockerfile --tag mela/alx-zone
+      run: docker build . --file Dockerfile --tag mela22/alx-zone:latest
       
     - name: Push into Docker Hub
-      run: docker push mela/alx-zone
+      run: docker push mela22/alx-zone
