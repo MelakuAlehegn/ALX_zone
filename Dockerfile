@@ -4,7 +4,7 @@ FROM python:3.8-alpine
 # copy the requirements file into the image
 COPY ./requirements.txt /app/requirements.txt
 
-# switch working directory
+# switch
 WORKDIR /app
 
 # install the dependencies and packages in the requirements file
