@@ -1,11 +1,11 @@
 name: AWS-BeanStalk-Deploy
 
 env:
-  APP_S3_BUCKET_NAME: "myalx" # BENSTALK S3 BUCKET NAME NAME
+  APP_S3_BUCKET_NAME: "myalx" # BENSTALK S3 BUCKET NAME
   APP_NAME : "alx-zone" # BENSTALK APP NAME
   ENV_NAME: "Alxzone-env" # YOUR BENSTALK APP ENV NAME
-  DEPLOY_PKG_NAME: "github-action-alx-zone_${{ github.sha }}.zip"
-  AWS_REGION_NAME: "us-east-1"
+  DEPLOY_PKG_NAME: "github-action-alx-zone_${{ github.sha }}.zip" # ZIP FILE NAME
+  AWS_REGION_NAME: "us-east-1" # REGION TOD DEPLOY
 
 on:
   push:
@@ -25,7 +25,7 @@ jobs:
      - name: Make zip file
        run: zip -r ${{ env.DEPLOY_PKG_NAME }} ./ -x *.git*
        
-     - name: Access to AWS
+     - name: Configure Access to AWS
        uses: aws-actions/configure-aws-credentials@v1
        with:
          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
@@ -44,7 +44,7 @@ jobs:
     needs: [continuous_integration]
 
     steps:
-     - name: Config Access to AWS
+     - name: Configure Access to AWS
        uses: aws-actions/configure-aws-credentials@v1
        with:
          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
